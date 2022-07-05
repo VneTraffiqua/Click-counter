@@ -1,5 +1,6 @@
 # Bitly url shorterer.
 
+Added `'BITLY_TOKEN'` to `.env` file.
 Run `main.py` with the optional parameter "url" as a link and get a bitlink.
 If an optional parameter is Bitlink, the program will count the number of clicks on it.
 
