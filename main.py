@@ -1,9 +1,18 @@
-import os
+from dotenv import load_dotenv
 import requests
+import argparse
+import sys
+import os
 from urllib.parse import urlparse
 
 
-def is_bitlink(bitly_token, url):
+def url_parser():
+    link_parser = argparse.ArgumentParser()
+    link_parser.add_argument('user_url', nargs='?')
+    return link_parser
+
+
+def is_bitlink(bitly_token, user_url):
     parsed_url = urlparse(user_url)
     netloc, path = parsed_url.netloc, parsed_url.path
     headers = {
@@ -30,7 +39,7 @@ def get_bitlink(bitly_token, url):
     return response.json()['link']
 
 
-def count_clicks(bitly_token, url):
+def count_clicks(bitly_token, user_url):
     parsed_url = urlparse(user_url)
     netloc, path = parsed_url.netloc, parsed_url.path    
     headers = {
@@ -45,8 +54,14 @@ def count_clicks(bitly_token, url):
 
 
 if __name__ == '__main__':
-    bitly_token = os.environ['BITLY_TOKEN']
-    user_url = input('Введите ссылку \n')
+    load_dotenv()
+    bitly_token = os.getenv('BITLY_TOKEN')
+    parser = url_parser()
+    namespace = parser.parse_args(sys.argv[1:])
+    if namespace.user_url:
+        user_url = namespace.user_url
+    else:
+        user_url = input('Введите ссылку \n')
     try:
         if is_bitlink(bitly_token, user_url):
             print('По ссылке перешли:',
