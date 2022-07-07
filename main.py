@@ -1,7 +1,6 @@
 from dotenv import load_dotenv
 import requests
 import argparse
-import sys
 import os
 from urllib.parse import urlparse
 
@@ -57,7 +56,7 @@ if __name__ == '__main__':
     load_dotenv()
     bitly_token = os.getenv('BITLY_TOKEN')
     parser = url_parser()
-    namespace = parser.parse_args(sys.argv[1:])
+    namespace = parser.parse_args()
     if namespace.user_url:
         user_url = namespace.user_url
     else:
