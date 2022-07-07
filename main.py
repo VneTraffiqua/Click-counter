@@ -55,9 +55,9 @@ def count_clicks(bitly_token, user_url):
 if __name__ == '__main__':
     load_dotenv()
     bitly_token = os.getenv('BITLY_TOKEN')
-    entered_argument = get_argument().parse_args()
-    if entered_argument.user_url:
-        user_url = entered_argument.user_url
+    entered_link = get_argument().parse_args()
+    if entered_link.user_url:
+        user_url = entered_link.user_url
     else:
         user_url = input('Введите ссылку \n')
     try:
