@@ -6,9 +6,9 @@ from urllib.parse import urlparse
 
 
 def url_parser():
-    link_parser = argparse.ArgumentParser()
-    link_parser.add_argument('user_url', nargs='?')
-    return link_parser
+    entered_argument = argparse.ArgumentParser()
+    entered_argument.add_argument('user_url', nargs='?')
+    return entered_argument
 
 
 def is_bitlink(bitly_token, user_url):
@@ -56,9 +56,9 @@ if __name__ == '__main__':
     load_dotenv()
     bitly_token = os.getenv('BITLY_TOKEN')
     parser = url_parser()
-    namespace = parser.parse_args()
-    if namespace.user_url:
-        user_url = namespace.user_url
+    entered_link = parser.parse_args()
+    if entered_link.user_url:
+        user_url = entered_link.user_url
     else:
         user_url = input('Введите ссылку \n')
     try:
