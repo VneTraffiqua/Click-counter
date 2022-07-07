@@ -11,11 +11,11 @@ def get_argument():
     return entered_argument
 
 
-def is_bitlink(bitly_token, user_url):
-    parsed_url = urlparse(user_url)
+def is_bitlink(service_token, url):
+    parsed_url = urlparse(url)
     netloc, path = parsed_url.netloc, parsed_url.path
     headers = {
-        'Authorization': f'Bearer {bitly_token}',
+        'Authorization': f'Bearer {service_token}',
     }
     response = requests.get(
         f'https://api-ssl.bitly.com/v4/bitlinks/{netloc}{path}',
@@ -24,9 +24,9 @@ def is_bitlink(bitly_token, user_url):
     return response.ok
 
 
-def get_bitlink(bitly_token, url):
+def get_bitlink(service_token, url):
     headers = {
-        'Authorization': f'Bearer {bitly_token}',
+        'Authorization': f'Bearer {service_token}',
     }
     data = {"long_url": url}
     response = requests.post(
@@ -38,11 +38,11 @@ def get_bitlink(bitly_token, url):
     return response.json()['link']
 
 
-def count_clicks(bitly_token, user_url):
-    parsed_url = urlparse(user_url)
+def count_clicks(service_token, url):
+    parsed_url = urlparse(url)
     netloc, path = parsed_url.netloc, parsed_url.path    
     headers = {
-        'Authorization': f'Bearer {bitly_token}',
+        'Authorization': f'Bearer {service_token}',
     }
     response = requests.get(
         f'https://api-ssl.bitly.com/v4/bitlinks/{netloc}{path}/clicks/summary',
