@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('user_url', nargs='?')
-    return parser
+    return parser.parse_args()
 
 
 def is_bitlink(service_token, url):
