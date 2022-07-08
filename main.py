@@ -6,9 +6,9 @@ from urllib.parse import urlparse
 
 
 def get_args():
-    entered_argument = argparse.ArgumentParser()
-    entered_argument.add_argument('user_url', nargs='?')
-    return entered_argument
+    parser = argparse.ArgumentParser()
+    parser.add_argument('user_url', nargs='?')
+    return parser
 
 
 def is_bitlink(service_token, url):
