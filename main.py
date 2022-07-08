@@ -5,7 +5,7 @@ import os
 from urllib.parse import urlparse
 
 
-def get_commandline():
+def get_args():
     entered_argument = argparse.ArgumentParser()
     entered_argument.add_argument('user_url', nargs='?')
     return entered_argument
@@ -55,7 +55,7 @@ def count_clicks(service_token, url):
 if __name__ == '__main__':
     load_dotenv()
     bitly_token = os.getenv('BITLY_TOKEN')
-    entered_link = get_commandline().parse_args()
+    entered_link = get_args().parse_args()
     if entered_link.user_url:
         user_url = entered_link.user_url
     else:
