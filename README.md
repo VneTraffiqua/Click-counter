@@ -13,8 +13,6 @@ Added `'BITLY_TOKEN'` to `.env` file.
 Run `main.py` with the optional parameter "url" as a link and get a bitlink.
 If an optional parameter is Bitlink, the program will count the number of clicks on it.
 
-Run 'main.py' without the optional parameter to enter links through ```input()```.
-
 ## How to install?
 
 Python3 should be already installed. 
